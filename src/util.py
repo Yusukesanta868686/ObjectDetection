@@ -1,5 +1,5 @@
 import random
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from sklearn.manifold import TSNE
 
 import torch

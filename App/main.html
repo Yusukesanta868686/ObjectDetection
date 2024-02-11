@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Detection App</title>
+    <!-- CSS styles -->
+    <style>
+        /* スタイルはここに追加 */
+    </style>
+</head>
+<body>
+    <h1>Object Detection App</h1>
+    <input type="file" accept="image/*" id="uploadInput">
+    <button onclick="detectObjects()">Detect Objects</button>
+    <canvas id="outputCanvas"></canvas>
+
+    <!-- JavaScript -->
+    <script>
+        // 画像アップロードと物体検出を処理する関数
+        function detectObjects() {
+            const input = document.getElementById('uploadInput');
+            const canvas = document.getElementById('outputCanvas');
+            const ctx = canvas.getContext('2d');
+
+            const file = input.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function(event) {
+                const image = new Image();
+                image.onload = function() {
+                    canvas.width = image.width;
+                    canvas.height = image.height;
+                    ctx.drawImage(image, 0, 0);
+
+                    // 物体検出ロジックをここに追加
+
+                    // 検出された物体を描画
+                    ctx.fillStyle = 'red';
+                    ctx.font = '24px Arial';
+                    ctx.fillText('Detected Object', 50, 50);
+                };
+                image.src = event.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        }
+    </script>
+</body>
+</html>
